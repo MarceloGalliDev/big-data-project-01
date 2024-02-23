@@ -42,3 +42,6 @@ SSE-KMS - chaves gerenciada pela aws mas temos acesso
 SSE-C - chaves gerenciada pelo usuario
 
 Criptografia do lado do cliente - dados ja chegam criptografados
+
+### S3 Tags
+Usamos tags para incluir conjuntos de chave/valor, para variadas situações, como por exemplo segurança
