@@ -45,3 +45,33 @@ Criptografia do lado do cliente - dados ja chegam criptografados
 
 ### S3 Tags
 Usamos tags para incluir conjuntos de chave/valor, para variadas situações, como por exemplo segurança
+
+### Conecting to instance aws
+```
+Utilizar ssh
+sudo su - postgres
+psql -U postgres
+\c {database}
+```
+
+Para executar script dentro do banco de dados
+```
+\i /var/lib/postgresql/relacional/{files}.sql
+```
+
+Verificar relações
+```
+\dt *.*
+```
+
+Inserindo dados no banco
+```
+INSERT INTO relacional.clientes(idcliente, cliente, estado, sexo, status)
+VALUE (251, 'Fernando Amaral', 'RS', 'M', 'Silver');
+```
+
+### Data Warehouse
+Criando cluster com RedShift
+
+Observar os custos
+
