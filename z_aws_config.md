@@ -75,3 +75,35 @@ Criando cluster com RedShift
 
 Observar os custos
 
+### Tipos de NoSQL
+Key Value (Hash, KVM)
+> não existe um tipo de documento
+> busca por linha de acordo com a Key
+> devido a sua simplicidade no tipo de armazenamento, é muito eficiente em consultas
+
+Ordenado a colunas (cassandra)
+> usado para compreensao de dados
+> a busca é tida por colunas especificas, nao se carrega toda a tabela de dados
+> cada coluna é armazenada separadamente
+
+Orientado a documentos (MongoDB)
+> armazena uma key value
+> documento estruturado com metadados fixados
+> geralmente é usado o JSON
+> estrutura separado por nome/valor, entre aspas duplas
+> separados por virgula
+> chaves separam os objetos
+> vetores sao suportados atraves de colchete
+> suporta esses tipos de dados: String / Numero / Vetor / Booleano / Nulo / Objeto
+> exemplo:
+```
+{"clientes": [
+    {"nome": "Marcelo", "sobrenome": "Galli"}
+    {"nome": "John", "sobrenome": "Doe"}
+]}
+```
+
+Orientados a grafos
+> composto por vertices e arestas
+> usado geralmente por redes sociais
+> podendo ser grafo valorado, nulo ou direcionado
