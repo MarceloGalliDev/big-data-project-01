@@ -107,3 +107,30 @@ Orientados a grafos
 > composto por vertices e arestas
 > usado geralmente por redes sociais
 > podendo ser grafo valorado, nulo ou direcionado
+> podendo ser grafo direcionado ou nao direcionado
+
+
+### MongoDB
+Open source  
+Multiplaforma  
+Escalável  
+Orientado a objeto: JSON  
+Permite documentos aninhados  
+Indexados com metadados
+Não tem schema fixo
+Não tem integridade referencial
+
+#### Comparando banco de dados relacional com MongoDB:
+
+Tabela = Coleção  
+Linha = Documento  
+Coluna = Campo  
+
+Tipo de dados:  
+String  
+Booleano  
+Inteiro  
+Double  
+Array 
+Timestamp  
+Object
