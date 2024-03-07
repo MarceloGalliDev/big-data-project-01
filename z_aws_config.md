@@ -118,19 +118,108 @@ Orientado a objeto: JSON
 Permite documentos aninhados  
 Indexados com metadados
 Não tem schema fixo
-Não tem integridade referencial
-
-#### Comparando banco de dados relacional com MongoDB:
-
+Não tem integridade referencial  
+#
+#### Comparando banco de dados relacional com MongoDB:  
 Tabela = Coleção  
 Linha = Documento  
 Coluna = Campo  
-
-Tipo de dados:  
+#
+#### Tipo de dados:  
 String  
 Booleano  
 Inteiro  
 Double  
 Array 
 Timestamp  
-Object
+Object  
+#
+#### Criando e inserindo dados na Coleção:
+```
+db.createCollection("Clients")
+```
+
+```
+db.{nome_da_coleção}.insert(
+    {nome: "Jonh", post: "Good post!", date: "2024-03-05"}
+)
+WriteResult({ "nInserted": 1})
+```
+
+```
+db.{nome_da_coleção}.insert[(
+    {nome: "Jonh", post: "Good post!", date: "2024-03-05"},
+    {nome: "Joseph", post: "Good post!", date: "2024-03-04"},
+    {nome: "Mariah", post: "Good post!", date: "2024-03-03"}
+)]
+BulkWriteResult({ "nInserted": 1})
+```
+#
+#### Recuperando dados/objetos
+```
+db.{nome_da_coleção}.find()
+```
+
+```
+db.{nome_da_coleção}.findOne()
+```
+
+```
+db.{nome_da_coleção}.find().pretty()
+```
+#
+#### Usando operadores
+```
+$or = ou
+$eq = igual
+$gt = maior que
+$gte = maior ou igual que
+$lt = menor que
+$lte = menor ou igual que
+$ne = diferente de
+$in = contém
+$nin = não contém
+$set = selecionar
+```
+#
+#### Embedded Documents
+```
+{
+    _id: "1010",
+    nome: : "Jose"
+}
+{
+    _id: "1010",
+    endereco: "Rua Delta",
+    cidade: "Beta",
+    estado: "Pi",
+    cep: "99999100"
+}
+
+{
+    _id: "1010",
+    nome: : "Jose"
+    endereco: {
+        endereco: "Rua Delta",
+        cidade: "Beta",
+        estado: "Pi",
+        cep: "99999100"
+    }
+}
+```
+#
+#### Document References
+```
+{
+    _id: "1010",
+    nome: : "Jose"
+    endereco: [121234]
+}
+{
+    _id: "121234",
+    endereco: "Rua Delta",
+    cidade: "Beta",
+    estado: "Pi",
+    cep: "99999100"
+}
+```
