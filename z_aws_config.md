@@ -4,48 +4,35 @@ chmod 400 "{name}.pem"
 
 ssh -i "{name}.pem" ubuntu@{chave}.compute-1.amazonaws.com
 ```
-
+#
 ### Structure Bucket S3
-The files inside the bucket follow this path pattern: `<bucket>/folder/subfolder/file.csv`
-
-Maximum size file is `5Gbytes`
-
-Object tag's: up to `10 key/value pairs`
-
+- The files inside the bucket follow this path pattern: `<bucket>/folder/subfolder/file.csv`
+- Maximum size file is: `5Gbytes`
+- Object tag's: up to `10 key/value pairs`
+#
 ### S3 Layers
-S3 Standard - for general user
-
-S3 Infrequent Access - for IA
-
-S3 One Zone - for use to one layer
-
-S3 Smart Layer - for optimize price
-
-Glacier - files to archive
-
+- S3 Standard - for general user
+- S3 Infrequent Access - for IA
+- S3 One Zone - for use to one layer
+- S3 Smart Layer - for optimize price
+- Glacier - files to archive
+#
 ### S3 Lifecycle
-Root Bucket > Gerenciamento 
-
-Incluir um nome
-
-O prefix é a pasta que será aplicado a regra
-
-Podemos aplicar a transição dos dados para determinado tipo de classe
-
+- Root Bucket: Gerenciamento 
+- Incluir um nome
+- O prefix é a pasta que será aplicado a regra
+- Podemos aplicar a transição dos dados para determinado tipo de classe
+#
 ### S3 Security
-Existe 4 tipos de chaves
-
-SSE-S3 - chaves gerenciada pela aws
-
-SSE-KMS - chaves gerenciada pela aws mas temos acesso
-
-SSE-C - chaves gerenciada pelo usuario
-
-Criptografia do lado do cliente - dados ja chegam criptografados
-
+- Existe 4 tipos de chaves
+- SSE-S3: chaves gerenciada pela aws
+- SSE-KMS: chaves gerenciada pela aws mas temos acesso
+- SSE-C: chaves gerenciada pelo usuario
+- Criptografia do lado do cliente: dados ja chegam criptografados
+#
 ### S3 Tags
-Usamos tags para incluir conjuntos de chave/valor, para variadas situações, como por exemplo segurança
-
+- Usamos tags para incluir conjuntos de chave/valor, para variadas situações, como por exemplo segurança
+#
 ### Conecting to instance aws
 ```
 Utilizar ssh
@@ -53,86 +40,81 @@ sudo su - postgres
 psql -U postgres
 \c {database}
 ```
-
-Para executar script dentro do banco de dados
+#### Para executar script dentro do banco de dados
 ```
 \i /var/lib/postgresql/relacional/{files}.sql
 ```
-
-Verificar relações
+#### Verificar relações
 ```
 \dt *.*
 ```
-
-Inserindo dados no banco
+#### Inserindo dados no banco
 ```
 INSERT INTO relacional.clientes(idcliente, cliente, estado, sexo, status)
 VALUE (251, 'Fernando Amaral', 'RS', 'M', 'Silver');
 ```
-
+#
 ### Data Warehouse
-Criando cluster com RedShift
-
-Observar os custos
+- Criando cluster com RedShift  
+- Observar os custos
 
 ### Tipos de NoSQL
-Key Value (Hash, KVM)
-> não existe um tipo de documento
-> busca por linha de acordo com a Key
-> devido a sua simplicidade no tipo de armazenamento, é muito eficiente em consultas
+#### Key Value (Hash, KVM)
+- não existe um tipo de documento
+- busca por linha de acordo com a Key
+- devido a sua simplicidade no tipo de armazenamento, é muito eficiente em consultas
 
-Ordenado a colunas (cassandra)
-> usado para compreensao de dados
-> a busca é tida por colunas especificas, nao se carrega toda a tabela de dados
-> cada coluna é armazenada separadamente
+#### Ordenado a colunas (cassandra)
+- usado para compreensao de dados
+- a busca é tida por colunas especificas, nao se carrega toda a tabela de dados
+- cada coluna é armazenada separadamente
 
-Orientado a documentos (MongoDB)
-> armazena uma key value
-> documento estruturado com metadados fixados
-> geralmente é usado o JSON
-> estrutura separado por nome/valor, entre aspas duplas
-> separados por virgula
-> chaves separam os objetos
-> vetores sao suportados atraves de colchete
-> suporta esses tipos de dados: String / Numero / Vetor / Booleano / Nulo / Objeto
-> exemplo:
+#### Orientado a documentos (MongoDB)
+- armazena uma key value
+- documento estruturado com metadados fixados
+- geralmente é usado o JSON
+- estrutura separado por nome/valor, entre aspas duplas
+- separados por virgula
+- chaves separam os objetos
+- vetores sao suportados atraves de colchete
+- suporta esses tipos de dados: String / Numero / Vetor / Booleano / Nulo / Objeto
+- exemplo:
 ```
 {"clientes": [
     {"nome": "Marcelo", "sobrenome": "Galli"}
     {"nome": "John", "sobrenome": "Doe"}
 ]}
 ```
-
+#
 Orientados a grafos
-> composto por vertices e arestas
-> usado geralmente por redes sociais
-> podendo ser grafo valorado, nulo ou direcionado
-> podendo ser grafo direcionado ou nao direcionado
-
-
+- composto por vertices e arestas
+- usado geralmente por redes sociais
+- podendo ser grafo valorado, nulo ou direcionado
+- podendo ser grafo direcionado ou nao direcionado
+#
 ### MongoDB
-Open source  
-Multiplaforma  
-Escalável  
-Orientado a objeto: JSON  
-Permite documentos aninhados  
-Indexados com metadados
-Não tem schema fixo
-Não tem integridade referencial  
+- Open source  
+- Multiplaforma  
+- Escalável  
+- Orientado a objeto: JSON  
+- Permite documentos aninhados  
+- Indexados com metadados
+- Não tem schema fixo
+- Não tem integridade referencial  
 #
 #### Comparando banco de dados relacional com MongoDB:  
-Tabela = Coleção  
-Linha = Documento  
-Coluna = Campo  
+- Tabela = Coleção  
+- Linha = Documento  
+- Coluna = Campo  
 #
 #### Tipo de dados:  
-String  
-Booleano  
-Inteiro  
-Double  
-Array 
-Timestamp  
-Object  
+- String  
+- Booleano  
+- Inteiro  
+- Double  
+- Array 
+- Timestamp  
+- Object  
 #
 #### Criando e inserindo dados na Coleção:
 ```
@@ -169,18 +151,16 @@ db.{nome_da_coleção}.find().pretty()
 ```
 #
 #### Usando operadores
-```
-$or = ou
-$eq = igual
-$gt = maior que
-$gte = maior ou igual que
-$lt = menor que
-$lte = menor ou igual que
-$ne = diferente de
-$in = contém
-$nin = não contém
-$set = selecionar
-```
+- $or = ou
+- $eq = igual
+- $gt = maior que
+- $gte = maior ou igual que
+- $lt = menor que
+- $lte = menor ou igual que
+- $ne = diferente de
+- $in = contém
+- $nin = não contém
+- $set = selecionar
 #
 #### Embedded Documents
 ```
@@ -222,4 +202,67 @@ $set = selecionar
     estado: "Pi",
     cep: "99999100"
 }
+```
+#
+#### Transform .sh in exec
+```
+make a permission: chmod u+x {name}.sh
+```
+```
+execute: ./{name}.sh
+```
+#
+#### MongoDB Commands
+- db = mostra o banco atual logado
+- show dbs = mostra todos banco de dados
+- use {nome_db} = cria ou utiliza o banco de dados indicado
+- mongoimport --db {nome_db} --legacy --collection {nome_colecao} --file {path_doc}.json
+#
+#### Redis
+- Usado para armazenar dados como uma cache de paginas, cache de instancias
+- e-commerce usado em carrinhos de compras
+- suporta streaming, particionamento de dados e clusters
+
+#### Structure of Redis
+- Strings
+    - SET para gravar dados: `chave valor`
+    - GET para ler dados: `chave`
+    - MSET para gravar varios dados simultaneamente: `chave valor chave valor chave valor`
+    - EXISTS para verificar se existe a chave
+    - DEL para excluir a chave
+    - TYPE para verificar o tipo da chave
+    - expiracao da chave valor, 3 parametros {tipo} {tempo} {classe}:
+        - EX = Segundos
+        - PX = milisegundos
+        - NX = so se a chave nao existir
+        - XX = so se a chave ja existir
+    - EXPIRE nos da expiração em segundos
+    - PEXPIRE nos da expiração em milisegundos
+    - PTTL para verificar o tempo em segundos
+    - TTL para verificar o tempo em milisegundos
+    - PERSIST remove o tempo de expiracao
+    - GETRANGE faz um get em um espaçamento especifico: `GETRANGE chave range(x y)`
+    - GETSET para atualizar uma chave valor
+    - MGET nos retorna varias chaves
+    - STRLEN para ver o tamanho de caracteres do valor vinculado a chave
+- Hashes
+- List
+- Sets
+
+#### Transactions
+- MULTI marca o inicio das transacoes
+- EXEC executa todos os comandos depois de MULTI
+- DISCARD descarta todos os comandos depois de MULTI
+
+#### Instalation Redis
+```
+sudo snap install redis
+```
+```
+sudo apt install redis-tools
+```
+
+#### Access CLI Redis
+```
+redis-cli
 ```
